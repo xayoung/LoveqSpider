@@ -24,7 +24,7 @@ class Spider:
         pattern = re.compile('<dl.*?clearfix">.*?<dt.*?<a.*?"(.*?)".*?target.*?">(.*?)</a>.*?class="ct"><span>(.*?)</dd>',re.S)
         items = re.findall(pattern,page)
 
-        jsonWMA = []
+        jsonChinese = []
         jsonMP3 = []
         for item in items:
             downloadURL = self.getDetailPage(item[0])
@@ -34,7 +34,7 @@ class Spider:
             if 'MP3格式' in name or 'mp3格式' in name:
                 if '普通话' in name:
                     # 保存普通话节目列表
-                    jsonWMA.append([downloadURL,item[1],0])
+                    jsonChinese.append([downloadURL,item[1],0])
                 else:
                     #保存粤语节目列表
                     jsonMP3.append([downloadURL,item[1],1])
@@ -62,15 +62,16 @@ class Spider:
              downloadURL = item
         return downloadURL
 
-    #将一页节目列表保存起来
-    def savePageInfo(self,pageIndex):
-        content = self.getContents(pageIndex)
-
     #传入起止页码，获取界面json
     def savePagesInfo(self,start,end):
         for i in range(start,end+1):
             print u"looking for page",i
             self.savePageInfo(i)
+
+    #将整页节目列表保存起来
+    def savePageInfo(self,pageIndex):
+        self.getContents(pageIndex)
+
 class Tools:
     #工具初始化
     def __init__(self):
@@ -120,6 +121,3 @@ for i in range(3,16):
 #保存JSON文件到当前文件夹
 if __name__ == "__main__":
     tool.store(year,totalJSON)
-
-
-
