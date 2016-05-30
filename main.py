@@ -28,9 +28,9 @@ class Spider:
         jsonMP3 = []
         for item in items:
             downloadURL = self.getDetailPage(item[0])
-            print item
+            message = "下载地址:" + str(item[0]) + "节目期数:" + str(item[1])
+            print message
             name=item[2].encode("utf-8")
-
             if 'MP3格式' in name or 'mp3格式' in name:
                 if '普通话' in name:
                     # 保存普通话节目列表
@@ -83,41 +83,61 @@ class Tools:
         for i in range(start,end+1):
             self.saveJSONInfo(year,i,JSON)
 
+    #单个月份
+    def saveSingleMonthJSON(self,year,month,JSON):
+        monthJSON = []
+        monthstr = ''
+        monthstr2 = ''
+        if month < 10:
+            monthstr = year + '.0' + str(month)
+            monthstr2 = year + '0' + str(month)
+        else:
+            monthstr = year + '.' + str(month)
+            monthstr2 = year + str(month)
+        for item in JSON:
+            if monthstr in item['title']:
+                monthJSON.append(item)
+        return monthJSON
+
     #将节目保存起来
     def saveJSONInfo(self,year,Index,JSON):
-        moonJSON = []
-        moonstr = ''
-        moonstr2 = ''
+        monthJSON = []
+        monthstr = ''
+        monthstr2 = ''
         if Index < 10:
-            moonstr = year + '.0' + str(Index)
-            moonstr2 = year + '0' + str(Index)
+            monthstr = year + '.0' + str(Index)
+            monthstr2 = year + '0' + str(Index)
         else:
-            moonstr = year + '.' + str(Index)
-            moonstr2 = year + str(Index)
+            monthstr = year + '.' + str(Index)
+            monthstr2 = year + str(Index)
         for item in JSON:
-            if moonstr in item['title']:
-                moonJSON.append(item)
-                self.JSONFile.setdefault(moonstr2,moonJSON)
+            if monthstr in item['title']:
+                monthJSON.append(item)
+                self.JSONFile.setdefault(monthstr2,monthJSON)
 
-    def store(self,year,JSON):
-        with open( year + 'JSONFile.json', 'w') as f:
+    def store(self,fileName,JSON):
+        with open( fileName + 'JSONFile.json', 'w') as f:
             f.write(json.dumps(JSON))
 
 
-#传入起止页码即可，在此传入了1,71,表示抓取第2到10页的节目
-spider = Spider()
-spider.savePagesInfo(1,71)
-tool = Tools()
-totalJSON ={}
-#设置年份,3代表2003年
-for i in range(3,16):
-    year = ''
-    if i < 10 :
-        year = '200' + str(i)
-    else:
-        year = '20' + str(i)
-    tool.saveNewJSONSInfo(year,1,12,spider.JSONMP3)
-    totalJSON.setdefault(year,tool.JSONFile)
+
 #保存JSON文件到当前文件夹
 if __name__ == "__main__":
+    # 传入起止页码，在此传入了1,71,表示抓取第1到71页的节目
+    spider = Spider()
+    spider.savePagesInfo(1, 71)
+    tool = Tools()
+    totalJSON = {}
+    # 设置年份,3代表2003年
+    for i in range(3, 16):
+        year = ''
+        if i < 10:
+            year = '200' + str(i)
+        else:
+            year = '20' + str(i)
+        tool.saveNewJSONSInfo(year, 1, 12, spider.JSONMP3)
+        totalJSON.setdefault(year, tool.JSONFile)
     tool.store(year,totalJSON)
+
+
+
