@@ -6,6 +6,9 @@
 LoveqSpider is a WebSpider to saving Programme's downloadURL of www.loveq.cn.
 And the Spider will dump the JSON file.
 
+
+![gif][1]
+
 #How to use
 
  - Step One
@@ -34,3 +37,5 @@ Run!
 
 #License
 MIT
+
+[1]: http://ww1.sinaimg.cn/mw1024/5e999b55gw1f48xhpl4ang20kx0hvnil.gif
