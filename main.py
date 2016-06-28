@@ -26,10 +26,11 @@ class Spider:
 
         jsonChinese = []
         jsonMP3 = []
+        print items
         for item in items:
             downloadURL = self.getDetailPage(item[0])
-            message = "下载地址:" + str(item[0]) + "节目期数:" + str(item[1])
-            print message
+            # message = "下载地址:" + str(item[0]) + "节目期数:" + str(item[1])
+            # print message
             name=item[2].encode("utf-8")
             if 'MP3格式' in name or 'mp3格式' in name:
                 if '普通话' in name:
@@ -125,7 +126,7 @@ class Tools:
 if __name__ == "__main__":
     # 传入起止页码，在此传入了1,71,表示抓取第1到71页的节目
     spider = Spider()
-    spider.savePagesInfo(1, 71)
+    spider.savePagesInfo(1, 2)
     tool = Tools()
     totalJSON = {}
     # 设置年份,3代表2003年
