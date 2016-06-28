@@ -1,22 +1,27 @@
-# -*- coding: utf-8 -*-
-import pycurl
-import json
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+#import pycurl
+#import json
 import requests
+import xinge
 
 
-f = file("06JSONFile.json")
-s = json.load(f)
-print s
-f.close
+#f = file("06JSONFile.json")
+#s = json.load(f)
+#print s
+#f.close
 
 
+# iOS全量推送
+
+print(xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4', 'python服务器自动推送测试', xinge.XingeApp.ENV_PROD))
 
 url = 'https://pythontest.wilddogio.com/test.json'
-json_data = s
+#json_data = s
 #headers = {'X-Api-Key': 'asdf1234'}
 
 r = requests.request('PUT', url, json=json_data)
-print(r.json)
+#print(r.json)
 
 
 #c = pycurl.Curl()
