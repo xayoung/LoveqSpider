@@ -10,7 +10,7 @@ spider.savePagesInfo(1,2)
 tool = main.Tools()
 totalJSON = {}
 #upload至wilddog后台
-wilddogURL = 'http://pythontest.wilddogio.com/'
+wilddogURL = 'https://pythontest.wilddogio.com/'
 
 uploadTool = main.uploadPushData()
 
