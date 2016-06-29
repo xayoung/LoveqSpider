@@ -28,7 +28,7 @@ class Spider:
 
         jsonChinese = []
         jsonMP3 = []
-        print items
+        #print items
         for item in items:
             downloadURL = self.getDetailPage(item[0])
             # message = "下载地址:" + str(item[0]) + "节目期数:" + str(item[1])
