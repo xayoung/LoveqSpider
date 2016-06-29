@@ -14,7 +14,6 @@ totalJSON = {}
 wilddogURL = 'https://pythontest.wilddogio.com/'
 
 uploadTool = main.uploadPushData()
-
 newJSON = tool.saveSingleMonthJSON(uploadTool.loaclYear,uploadTool.loaclMonth,spider.JSONMP3)
 newJSOND = json.dumps(newJSON)
 newJSONdata = json.loads(newJSOND)
