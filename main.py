@@ -2,6 +2,8 @@
 import urllib2
 import re
 import json
+import time
+import requests
 
 
 class Spider:
@@ -26,7 +28,7 @@ class Spider:
 
         jsonChinese = []
         jsonMP3 = []
-        print items
+        #print items
         for item in items:
             downloadURL = self.getDetailPage(item[0])
             # message = "下载地址:" + str(item[0]) + "节目期数:" + str(item[1])
@@ -120,6 +122,15 @@ class Tools:
         with open( fileName + 'JSONFile.json', 'w') as f:
             f.write(json.dumps(JSON))
 
+class uploadPushData:
+
+    def __init__(self):
+        self.loaclYear = time.strftime("%Y", time.localtime())
+        self.loaclMonth = time.strftime("%m", time.localtime())
+
+    def uploadJSON(self,URL,JSON):
+        url = URL + self.loaclYear + '/' + self.loaclYear + self.loaclMonth + '.json'
+        r = requests.request('PUT', url, json=JSON)
 
 
 #保存JSON文件到当前文件夹

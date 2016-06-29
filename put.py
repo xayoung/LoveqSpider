@@ -1,37 +1,28 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
-#import pycurl
-#import json
+# -*- coding: utf-8 -*-
+import pycurl
+import json
 import requests
 import xinge
+import time
 
 
-#f = file("06JSONFile.json")
-#s = json.load(f)
-#print s
-#f.close
-
+loaclYear = time.strftime("%Y", time.localtime())
+loaclMonth = time.strftime("%m", time.localtime())
 
 # iOS全量推送
+#print xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4', 'python自动推送测试8:56', xinge.XingeApp.ENV_PROD)
 
-print(xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4', 'python服务器自动推送测试', xinge.XingeApp.ENV_PROD))
+f = file("06JSONFile.json")
+s = json.load(f)
+print s
+f.close
 
-url = 'https://pythontest.wilddogio.com/test.json'
+
+
+url = 'https://pythontest.wilddogio.com/'+ loaclYear + '/' + loaclYear+loaclMonth +'.json'
 #json_data = s
-#headers = {'X-Api-Key': 'asdf1234'}
+#r = requests.request('PUT', url, json=json_data)
+array = json.dumps(requests.get(url).json())
+data = json.loads(array)
+print(len(data))
 
-r = requests.request('PUT', url, json=json_data)
-#print(r.json)
-
-
-#c = pycurl.Curl()
-#c.setopt(pycurl.URL, "https://pythontest.wilddogio.com/test.json/")
-#c.setopt(pycurl.HTTPHEADER, ['Content-Type: application/json', 'Accept: application/json'])
-#c.setopt(pycurl.CUSTOMREQUEST, "PUT")
-#data = json.dumps({"xayoung":"001"})
-#c.setopt(pycurl.PUT, True)
-#c.setopt(pycurl.POSTFIELDS,data)
-#c.perform()
-#c.close()
-
-#curl -X PUT -d '{ "alanisawesome": { "name": "Alan Turing", "birthday": "June 23, 1912" } }' 'https://pythontest.wilddogio.com/test.json'
