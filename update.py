@@ -11,7 +11,7 @@ spider.savePagesInfo(1,2)
 tool = main.Tools()
 totalJSON = {}
 #upload至wilddog后台
-wilddogURL = 'https://pythontest.wilddogio.com/program/'
+wilddogURL = 'https://loveq.wilddogio.com/program/'
 
 uploadTool = main.uploadPushData()
 newJSON = tool.saveSingleMonthJSON(uploadTool.loaclYear,uploadTool.loaclMonth,spider.JSONMP3)
