@@ -26,11 +26,11 @@ oldJSONdata = json.loads(oldJSON)
 
 if  oldJSONdata == None:
     uploadTool.uploadJSON(wilddogURL,newJSON)
-    xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4',  uploadTool.loaclMonth + 'python自动推送测试', xinge.XingeApp.ENV_PROD)
+    xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4', '最新节目已更新,快去下载吧!', xinge.XingeApp.ENV_PROD)
 else:
     if len(newJSONdata) > len(oldJSONdata):
         uploadTool.uploadJSON(wilddogURL, newJSON)
-        xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4',  uploadTool.loaclMonth + 'python自动推送测试', xinge.XingeApp.ENV_PROD)
+        xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4', '最新节目已更新,快去下载吧!', xinge.XingeApp.ENV_PROD)
         print 'updateToWilddog'
     else:
         print 'none update'
