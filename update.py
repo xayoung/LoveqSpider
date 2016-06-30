@@ -3,6 +3,7 @@ import main
 import requests
 import json
 import xinge
+import time
 
 #输入页码,爬取节目信息
 spider = main.Spider()
@@ -27,12 +28,15 @@ oldJSONdata = json.loads(oldJSON)
 if  oldJSONdata == None:
     uploadTool.uploadJSON(wilddogURL,newJSON)
     xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4', '最新节目已更新,快去下载吧!', xinge.XingeApp.ENV_PROD)
+    print 'newMonthDataToWilddog'
 else:
     if len(newJSONdata) > len(oldJSONdata):
         uploadTool.uploadJSON(wilddogURL, newJSON)
         xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4', '最新节目已更新,快去下载吧!', xinge.XingeApp.ENV_PROD)
-        print 'updateToWilddog'
+        print 'updateDataToWilddog'
     else:
         print 'none update'
+        
+print time.strftime("%m-%d-%H:%M", time.localtime())
 #写入文件
 #tool.store('06', tool.saveSingleMonthJSON('2016',6,spider.JSONMP3))
