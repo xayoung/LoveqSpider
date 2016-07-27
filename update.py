@@ -12,7 +12,7 @@ spider.savePagesInfo(1,2)
 tool = main.Tools()
 totalJSON = {}
 #upload至wilddog后台
-wilddogURL = 'https://loveq.wilddogio.com/program/'
+wilddogURL = 'https://xxx.xxxx.xxxx'
 
 uploadTool = main.uploadPushData()
 newJSON = tool.saveSingleMonthJSON(uploadTool.loaclYear,uploadTool.loaclMonth,spider.JSONMP3)
@@ -27,12 +27,12 @@ oldJSONdata = json.loads(oldJSON)
 
 if  oldJSONdata == None:
     uploadTool.uploadJSON(wilddogURL,newJSON)
-    xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4', '最新节目已更新,快去下载吧!', xinge.XingeApp.ENV_PROD)
+    xinge.PushAllIos(xxx, 'xxx', '最新节目已更新,快去下载吧!', xinge.XingeApp.ENV_PROD)
     print 'newMonthDataToWilddog'
 else:
     if len(newJSONdata) > len(oldJSONdata):
         uploadTool.uploadJSON(wilddogURL, newJSON)
-        xinge.PushAllIos(2200205039, '284ce032cf63af6633ad743b6cdd13c4', '最新节目已更新,快去下载吧!', xinge.XingeApp.ENV_PROD)
+        xinge.PushAllIos(xxx, 'xxxx', '最新节目已更新,快去下载吧!', xinge.XingeApp.ENV_PROD)
         print 'updateDataToWilddog'
     else:
         print 'none update'
