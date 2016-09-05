@@ -18,14 +18,14 @@ uploadTool = main.uploadPushData()
 newJSON = tool.saveSingleMonthJSON(uploadTool.loaclYear,uploadTool.loaclMonth,spider.JSONMP3)
 newJSOND = json.dumps(newJSON)
 newJSONdata = json.loads(newJSOND)
-print newJSONdata
+#print newJSONdata
 
 #读取老数据
 url = wilddogURL+ uploadTool.loaclYear + '/' + uploadTool.loaclYear+uploadTool.loaclMonth +'.json'
-print url
+#print url
 oldJSON = json.dumps(requests.get(url).json())
 oldJSONdata = json.loads(oldJSON)
-print oldJSONdata
+#print oldJSONdata
 
 #如果老数据为空
 if  oldJSONdata == None:
