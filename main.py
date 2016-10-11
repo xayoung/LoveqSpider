@@ -45,6 +45,7 @@ class Spider:
                     contents.setdefault('url',downloadURL)
                     contents.setdefault('title',item[1])
                     contents.setdefault('type',str(1))
+                    print contents
                     self.JSONMP3.append(contents)
                     #2006-2009年的节目没有采用[MP3格式]xxxx这样的方式作为title,手动进行切换代码吧=.=
                     # jsonMP3.append([downloadURL, item[1], 1])
@@ -53,6 +54,7 @@ class Spider:
                     # contents.setdefault('title', item[1])
                     # contents.setdefault('type', str(1))
                     # self.JSONMP3.append(contents)
+
 
     #获取真实下载地址
     def getDetailPage(self,infoURL):

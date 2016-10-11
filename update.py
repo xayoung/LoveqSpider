@@ -36,7 +36,7 @@ else:
         print 'updateDataToWilddog'
     else:
         print 'none update'
-        
+
 print time.strftime("%m-%d-%H:%M", time.localtime())
 #写入文件
 #tool.store('06', tool.saveSingleMonthJSON('2016',6,spider.JSONMP3))
