@@ -11,6 +11,11 @@ And the Spider will dump the JSON file.
 
 #How to use
 
+update.py: update Data to wilddog
+
+uploadToLeanCloud.py: update Data to leancloud
+
+
  - Step One
 
 Set the begin page and end page. 
