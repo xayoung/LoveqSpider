@@ -4,7 +4,7 @@ import re
 import leancloud
 import time
 
-leancloud.init('xSKEPbolbbf8kzTyPwh0k8IN-gzGzoHsz', 'yfsU1LM3UsB2UPQPURS9zvew')
+leancloud.init('leancloud提供', 'leancloud提供')
 
 from leancloud import Object
 
