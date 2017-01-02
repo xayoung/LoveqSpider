@@ -4,7 +4,7 @@ import re
 import leancloud
 import time
 
-leancloud.init('leancloud提供', 'leancloud提供')
+leancloud.init('xSKEPbolbbf8kzTyPwh0k8IN-gzGzoHsz', 'yfsU1LM3UsB2UPQPURS9zvew')
 
 from leancloud import Object
 
@@ -77,14 +77,15 @@ class Spider:
                     contents.setdefault('title',item[1])
                     contents.setdefault('type',str(1))
                     print contents
-
                     if item[1] not in CloudDataListStr:
-                        print "没有包含"
-                        loveqURLquery = LoveQ()
-                        loveqURLquery.set('date', item[1])
-                        loveqURLquery.set('url', downloadURL)
-                        loveqURLquery.set('cantonese', True)
-                        loveqURLquery.save()
+                        if year in item[1] :
+                            print "没有包含"
+                            loveqURLquery = LoveQ()
+                            loveqURLquery.set('date', item[1])
+                            loveqURLquery.set('url', downloadURL)
+                            loveqURLquery.set('cantonese', True)
+                            loveqURLquery.save()
+
 
     #获取真实下载地址
     def getDetailPage(self,infoURL):
