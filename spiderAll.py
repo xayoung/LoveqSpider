@@ -61,13 +61,25 @@ class Spider:
             split_cleared_title = cleared_title[15:]
             download_url = self.get_detail_page(item[0])
             download_count = item[3]
-            real_title = split_cleared_title.split(' ')
+            real_title = split_cleared_title.split(' ', 1)
 
             # print download_count
-            # print clearedTitle[17:]
-
             if "MP3" in cleared_title and "普通话" not in split_cleared_title :
                 print real_title[-1]
+                date_array = item[1].split('.', 3)
+                if len(date_array) == 3:
+                    print date_array
+                    payload = {'title': real_title[-1],
+                               'year': date_array[0],
+                               'month': date_array[1],
+                               'day': date_array[2],
+                               'downloadUrl': download_url,
+                               'downloadCount': download_count.replace(',', '')}
+
+                    r = requests.post("http://loveq.dev/api/update/", data=payload)
+                    print(r.text)
+                else:
+                    print '===========>' + real_title[-1] + '<==============' + str(page_index)
             #     loveqURLquery = LoveQ()
             #     loveqURLquery.set('date', item[1])
             #     loveqURLquery.set('url', download_url)
@@ -77,5 +89,5 @@ class Spider:
 if __name__ == "__main__":
     spider = Spider()
 
-    for i in range(11, 13):
+    for i in range(10, 12):
         spider.get_contents(i)
