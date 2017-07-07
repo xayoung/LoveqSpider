@@ -7,7 +7,7 @@ import time
 
 # 输入页码,爬取节目信息
 spider = main.Spider()
-spider.savePagesInfo(1,2)
+spider.saveOnePageInfo()
 # 分类工具进行筛选
 tool = main.Tools()
 totalJSON = {}
@@ -15,10 +15,9 @@ totalJSON = {}
 wilddogURL = 'https://loveq.wilddogio.com/program/'
 
 uploadTool = main.uploadPushData()
-newJSON = tool.saveSingleMonthJSON(uploadTool.loaclYear,uploadTool.loaclMonth,spider.JSONMP3)
+newJSON = tool.saveSingleMonthJSON(uploadTool.loaclYear, uploadTool.loaclMonth, spider.JSONMP3)
 newJSOND = json.dumps(newJSON)
 newJSONdata = json.loads(newJSOND)
-
 
 # 读取老数据
 url = wilddogURL + uploadTool.loaclYear + '/' + uploadTool.loaclYear+uploadTool.loaclMonth +'.json'

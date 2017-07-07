@@ -54,13 +54,18 @@ class Spider:
         CloudData = leancloud.Object.extend('LoveQ')
         query = CloudData.query
         query.startswith("date", year)
+        query.limit(10)
+        query.add_descending('date')
         CloudDataList = query.find()
-        #
-        for item in CloudDataList:
+
+        for i in range(0, 5):
+            item = CloudDataList[i]
             title = item.get('date')
             CloudDataListStr.append(title)
 
-        for item in items:
+        for i in range(0, 5):
+            item = items[i]
+
             downloadURL = self.getDetailPage(item[0])
             # message = "下载地址:" + str(item[0]) + "节目期数:" + str(item[1])
             # print message
@@ -110,6 +115,10 @@ class Spider:
             print "looking for page", i
             self.savePageInfo(i)
 
+    def getLatest(self):
+        print "looking for page"
+        self.savePageInfo(1)
+
     # 将整页节目列表保存起来
     def savePageInfo(self, pageIndex):
         self.getContents(pageIndex)
@@ -119,4 +128,4 @@ class Spider:
 if __name__ == "__main__":
     # 传入起止页码，在此传入了1,71,表示抓取第1到71页的节目
     spider = Spider()
-    spider.savePagesInfo(1, 2)
+    spider.getLatest()

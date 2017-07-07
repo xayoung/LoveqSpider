@@ -30,8 +30,6 @@ class Spider:
         # print items
         for item in items:
             downloadURL = self.getDetailPage(item[0])
-            # message = "下载地址:" + str(item[0]) + "节目期数:" + str(item[1])
-            # print message
             name = item[2].encode("utf-8")
             if 'MP3格式' in name or 'mp3格式' in name:
                 if '普通话' in name:
@@ -72,6 +70,11 @@ class Spider:
         for i in range(start, end + 1):
             print "looking for page", i
             self.savePageInfo(i)
+
+    # 传入单页码，获取界面json
+    def saveOnePageInfo(self):
+        print "looking for page"
+        self.savePageInfo(1)
 
     # 将整页节目列表保存起来
     def savePageInfo(self, pageIndex):
