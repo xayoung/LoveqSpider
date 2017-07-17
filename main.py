@@ -9,7 +9,7 @@ import requests
 class Spider:
     # 页面初始化
     def __init__(self):
-        self.siteURL = 'http://www.loveq.cn/program.php?&cat_id=20&'
+        self.siteURL = 'http://www.loveq.cn/program.php?&'
         self.JSONMP3 = []
 
     # 获取索引页面的内容
